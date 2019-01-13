@@ -1,7 +1,3 @@
-param(
-    [string] $Packages
-)
-
 Write-Host "Hello world!"
 
 # Install the Choco if not yet
