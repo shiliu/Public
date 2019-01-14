@@ -14,7 +14,7 @@ if (!(Test-Path "$ENV:ChocolateyInstall\bin\choco.exe")){
 
 # liushi@microsoft
 if ($isInMsCorp){
-    Write-Host "Try to add source for MS corp as this machine is joined to MS domain."
+    Write-Host "Try to add source for current user in Microsoft corp as this machine is joined to Microsoft domain."
     if (Test-Path "\\stcsuz\root\users\liushi\choco\packages"){
         choco source add -n=liushi -s="\\stcsuz\root\users\liushi\choco\packages" --priority=20
     }
