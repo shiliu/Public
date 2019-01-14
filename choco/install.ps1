@@ -1,4 +1,4 @@
-$isInMsCorp = Test-Path "\\stcsuz"
+$isInMsCorp = $ENV:USERDNSDOMAIN -like "*.microsoft.com"
 
 #
 # Step 1: Install the Choco if not yet
