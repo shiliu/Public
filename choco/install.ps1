@@ -1,4 +1,4 @@
-$isInMsCorp = Test-Path "\\stcsuz"
+$isInMsCorp = $ENV:USERDNSDOMAIN -like "*.microsoft.com"
 $curUserName = $ENV:USERNAME
 
 #
@@ -15,8 +15,9 @@ if (!(Test-Path "$ENV:ChocolateyInstall\bin\choco.exe")){
 
 # liushi@microsoft
 if ($isInMsCorp){
-    if (Test-Path "\\stcsuz\root\users\$curUserName\choco\packages"){
-        choco source add -n=$curUserName -s="\\stcsuz\root\users\$curUserName\choco\packages" --priority=20
+    Write-Host "Try to add source for current user in Microsoft corp as this machine is joined to Microsoft domain."
+    if (Test-Path "\\stcsuz\root\users\liushi\choco\packages"){
+        choco source add -n=liushi -s="\\stcsuz\root\users\liushi\choco\packages" --priority=20
     }
 
     if (Test-Path "\\stcsuz\root\users\$curUserName\choco\Install-AdditionalSources.ps1"){
