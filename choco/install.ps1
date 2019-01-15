@@ -1,4 +1,5 @@
 $isInMsCorp = Test-Path "\\stcsuz"
+$curUserName = $ENV:USERNAME
 
 #
 # Step 1: Install the Choco if not yet
@@ -14,8 +15,12 @@ if (!(Test-Path "$ENV:ChocolateyInstall\bin\choco.exe")){
 
 # liushi@microsoft
 if ($isInMsCorp){
-    if (Test-Path "\\stcsuz\root\users\liushi\choco\packages"){
-        choco source add -n=liushi -s="\\stcsuz\root\users\liushi\choco\packages" --priority=20
+    if (Test-Path "\\stcsuz\root\users\$curUserName\choco\packages"){
+        choco source add -n=$curUserName -s="\\stcsuz\root\users\$curUserName\choco\packages" --priority=20
+    }
+
+    if (Test-Path "\\stcsuz\root\users\$curUserName\choco\Install-AdditionalSources.ps1"){
+        . "\\stcsuz\root\users\$curUserName\choco\Install-AdditionalSources.ps1"
     }
 }
 
@@ -29,8 +34,8 @@ choco source add -n=ddrr -s="http://nuget.ddrr.org/api/odata" --priority=10
 
 # Install the packages defined in default config file in MS corp.
 if ($isInMsCorp){
-    if (Test-Path "\\stcsuz\root\users\liushi\choco\default.config"){
-        choco install "\\stcsuz\root\users\liushi\choco\default.config" -y
+    if (Test-Path "\\stcsuz\root\users\$curUserName\choco\default.config"){
+        choco install "\\stcsuz\root\users\$curUserName\choco\default.config" -y
     }
 }
 
