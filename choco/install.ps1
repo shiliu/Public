@@ -49,6 +49,7 @@ else {
 }
 Write-Host ""
 
+
 #
 # Step 4: Do customized setup for current user for microsoft corp network accessible machine
 #
