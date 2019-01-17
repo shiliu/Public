@@ -42,10 +42,10 @@ Write-Host ""
 $userSetupUrl = "https://raw.githubusercontent.com/shiliu/Public/master/choco/users/$curUserName.ps1"
 if (Check-Url $userSetupUrl) {
     Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString($userSetupUrl))
-    Write-Host "Customized setup script for current user '$curUserName' has been invoked." -ForegroundColor Green
+    Write-Host "Global customized setup script for current user '$curUserName' has been invoked." -ForegroundColor Green
 }
 else {
-    Write-Host "There is no customized setup script for current user '$curUserName'." -ForegroundColor Yellow
+    Write-Host "There is no global customized setup script for current user '$curUserName'." -ForegroundColor Yellow
 }
 Write-Host ""
 
