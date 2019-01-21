@@ -32,7 +32,7 @@ Write-Host ""
 # Step 2: Basic setup
 #
 choco source add -n=ddrr -s="http://nuget.ddrr.org/api/odata" --priority=10
-choco install ddrr.SetupEnv -y
+choco install SetupEnv -y
 Write-Host ""
 
 
